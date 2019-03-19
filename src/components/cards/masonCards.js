@@ -5,11 +5,20 @@ const MasonCards = ({ resource, onClick, upvote, userId, hasVoted }) => {
 
     if(!resource.meta.image) resource.meta.image = "none"
     if (!resource.meta.image.includes("http") || resource.meta.image.includes("vanguardngr")) resource.meta.image = `https://via.placeholder.com/1500/2e303a/FFFFFF/?text=No%20Image%20Found`
+    let divStyle = {
+        backgroundImage: 'url(' + resource.meta.image + ')',
+        height: '10em',
+        'background-clip': 'content-box',
+        'background-repeat': 'no-repeat',
+        'background-size': 'contain'
+      };
+      
 
         return (
             <div className="p-2" >
                 <div className="card cardRes">
-                    <img className="card-img-top img-respsonsive" src={resource.meta.image} alt={resource.meta.title.slice(0, 15)} onClick={() => onClick(resource.slug)} />
+                    {/* <img className="card-img-top img-respsonsive" src={resource.meta.image} alt={resource.meta.title.slice(0, 15)} onClick={() => onClick(resource.slug)} /> */}
+                    <div className="card-img-top img-respsonsive" style={divStyle} alt={resource.meta.title.slice(0, 15)} onClick={() => onClick(resource.slug)}></div>
                     <div className="card-body ">
                         <h1 onClick={() => onClick(resource.slug)}>{resource.meta.title}</h1>
                         <p className="card-text" onClick={() => onClick(resource.slug)}>{resource.meta.description}</p>
